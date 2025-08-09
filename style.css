@@ -1,6 +1,6 @@
 /* Police et style global */
 :root{
-  --card-w: 340px;
+  --card-w: 820px;
   --accent: #2b6cb0;
 }
 *{box-sizing:border-box}
