@@ -26,8 +26,8 @@ body {
 }
 
 /* Petite optimisation pour Notion (réduire la largeur si embed) */
-@media (max-width: 320px){
-  .body{ width: 260px; padding: 14px }
+@media (max-width: 360px){
+  .body{ width: 280px; padding: 14px }
 }
 
 /* Météo actuelle */
