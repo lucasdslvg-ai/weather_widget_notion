@@ -18,6 +18,11 @@ body {
     align-items: center;
     gap: 2rem;
 }
+.location {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza verticalmente o texto */
+}
 .current-weather {
     display: flex;
     flex-direction: column;
