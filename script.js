@@ -39,7 +39,7 @@ fetch(API_URL_FORECAST)
         const days = {};
         data.list.forEach(item => {
             const date = new Date(item.dt_txt);
-            const dayName = date.toLocaleDateString("fr-CH", { weekday: "long" });
+            const dayName = date.toLocaleDateString("fr-FR", { weekday: "long" });
             if (!days[dayName]) days[dayName] = item;
         });
         const keys = Object.keys(days).slice(1, 4);
