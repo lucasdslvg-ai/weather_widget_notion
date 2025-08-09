@@ -8,7 +8,13 @@ const UNITS = "metric"; // Celsius
 const API_URL_CURRENT = `https://api.openweathermap.org/data/2.5/weather?q=${CITY}&units=${UNITS}&lang=${LANG}&appid=${API_KEY}`;
 const API_URL_FORECAST = `https://api.openweathermap.org/data/2.5/forecast?q=${CITY}&units=${UNITS}&lang=${LANG}&appid=${API_KEY}`;
 
+// CONFIGURATION
+let forecastDays = 3; // Pode ser 3 ou 5
+
+// ICONES
 const skycons = new Skycons({ color: "white" });
+skycons.add("icon-today", Skycons.CLEAR_DAY); 
+skycons.play();
 
 // ==============================
 // Convertit texte API -> icône Skycons
@@ -24,6 +30,41 @@ function setWeatherIcon(canvasId, description) {
     skycons.add(canvasId, iconType);
 }
 
+// ==============================
+// Atualiza previsão para X dias
+// ==============================
+function renderForecast() {
+    fetch(API_URL_FORECAST)
+        .then(res => res.json())
+        .then(data => {
+            const days = {};
+            data.list.forEach(item => {
+                const date = new Date(item.dt_txt);
+                const dayName = date.toLocaleDateString("fr-FR", { weekday: "long" });
+                if (!days[dayName]) days[dayName] = item;
+            });
+            const keys = Object.keys(days).slice(1, forecastDays + 1);
+            keys.forEach((dayName, i) => {
+                document.getElementById(`day${i+1}-name`).textContent = dayName;
+                document.getElementById(`day${i+1}-max`).textContent = `${Math.round(days[dayName].main.temp_max)} °C`;
+                document.getElementById(`day${i+1}-min`).textContent = `${Math.round(days[dayName].main.temp_min)} °C`;
+                setWeatherIcon(`icon-day${i+1}`, days[dayName].weather[0].description.toLowerCase());
+            });
+            skycons.play();
+        });
+}
+
+// ==============================
+// Evento para trocar entre 3 e 5 dias
+// ==============================
+document.getElementById("forecast-select").addEventListener("change", function() {
+    forecastDays = parseInt(this.value);
+    renderForecast();
+});
+
+// ==============================
+// Atualiza clima atual
+// ==============================
 fetch(API_URL_CURRENT)
     .then(res => res.json())
     .then(data => {
@@ -33,21 +74,7 @@ fetch(API_URL_CURRENT)
         skycons.play();
     });
 
-fetch(API_URL_FORECAST)
-    .then(res => res.json())
-    .then(data => {
-        const days = {};
-        data.list.forEach(item => {
-            const date = new Date(item.dt_txt);
-            const dayName = date.toLocaleDateString("fr-FR", { weekday: "long" });
-            if (!days[dayName]) days[dayName] = item;
-        });
-        const keys = Object.keys(days).slice(1, 4);
-        keys.forEach((dayName, i) => {
-            document.getElementById(`day${i+1}-name`).textContent = dayName;
-            document.getElementById(`day${i+1}-max`).textContent = `${Math.round(days[dayName].main.temp_max)} °C`;
-            document.getElementById(`day${i+1}-min`).textContent = `${Math.round(days[dayName].main.temp_min)} °C`;
-            setWeatherIcon(`icon-day${i+1}`, days[dayName].weather[0].description.toLowerCase());
-        });
-        skycons.play();
-    });
+// ==============================
+// Inicializa previsão
+// ==============================
+renderForecast();
