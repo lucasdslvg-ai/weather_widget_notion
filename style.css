@@ -1,8 +1,3 @@
-:root {
-    --bg-color: #1f1f1f; /* Padrão escuro */
-    --text-color: white;
-}
-
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
