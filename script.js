@@ -1,10 +1,18 @@
-const API_KEY = "fa182a192b3cd7f3af1541b8c64daeab";
+// ==============================
+// CONFIGURATION - Remplace TA_CLE_API_ICI par ta clé OpenWeatherMap
+// ==============================
+const API_KEY = "fa182a192b3cd7f3af1541b8c64daeab"; // <-- Remplace par ta clé
 const CITY = "Geneva";
-const API_URL_CURRENT = `https://api.openweathermap.org/data/2.5/weather?q=${CITY}&appid=${API_KEY}&units=metric`;
-const API_URL_FORECAST = `https://api.openweathermap.org/data/2.5/forecast?q=${CITY}&appid=${API_KEY}&units=metric`;
+const LANG = "fr"; // "fr" pour descriptions en français
+const UNITS = "metric"; // Celsius
+const API_URL_CURRENT = `https://api.openweathermap.org/data/2.5/weather?q=${CITY}&units=${UNITS}&lang=${LANG}&appid=${API_KEY}`;
+const API_URL_FORECAST = `https://api.openweathermap.org/data/2.5/forecast?q=${CITY}&units=${UNITS}&lang=${LANG}&appid=${API_KEY}`;
 
 const skycons = new Skycons({ color: "white" });
 
+// ==============================
+// Convertit texte API -> icône Skycons
+// ==============================
 function setWeatherIcon(canvasId, description) {
     let iconType = Skycons.CLEAR_DAY;
     if (description.includes("cloud")) iconType = Skycons.PARTLY_CLOUDY_DAY;
