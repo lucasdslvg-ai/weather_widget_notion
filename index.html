@@ -1,53 +1,41 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Météo — Genève</title>
-
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Widget</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- <div class="weather-card"> -->
-        <!-- Météo actuelle -->
+    <div class="weather-widget">
         <div class="current-weather">
-            <h2 class="city">GENEVA</h2>
-            <p class="subtitle">MÉTÉO</p>
-            <canvas class="weather-icon" width="160" height="50"></canvas>
-            <div class="temperature">--°C</div>
-            <p class="description">chargement…</p>
+            <div class="location">GENÈVE<br><span class="subtitle">MÉTÉO</span></div>
+            <canvas id="icon-current" width="64" height="64"></canvas>
+            <div class="temp"><span id="temp-current"></span>°C<br><span id="desc-current"></span></div>
         </div>
-
-        <!-- Prévisions -->
         <div class="forecast">
             <div class="day">
-                <p class="day-name">Samedi</p>
-                <canvas class="weather-icon" width="48" height="48"></canvas>
-                <p class="temp-max">--°C</p>
-                <p class="temp-min">--°C</p>
+                <div class="day-name" id="day1-name"></div>
+                <canvas id="icon-day1" width="48" height="48"></canvas>
+                <div class="temp-max" id="day1-max"></div>
+                <div class="temp-min" id="day1-min"></div>
             </div>
             <div class="day">
-                <p class="day-name">Dimanche</p>
-                <canvas class="weather-icon" width="48" height="48"></canvas>
-                <p class="temp-max">--°C</p>
-                <p class="temp-min">--°C</p>
+                <div class="day-name" id="day2-name"></div>
+                <canvas id="icon-day2" width="48" height="48"></canvas>
+                <div class="temp-max" id="day2-max"></div>
+                <div class="temp-min" id="day2-min"></div>
             </div>
             <div class="day">
-                <p class="day-name">Lundi</p>
-                <canvas class="weather-icon" width="48" height="48"></canvas>
-                <p class="temp-max">--°C</p>
-                <p class="temp-min">--°C</p>
+                <div class="day-name" id="day3-name"></div>
+                <canvas id="icon-day3" width="48" height="48"></canvas>
+                <div class="temp-max" id="day3-max"></div>
+                <div class="temp-min" id="day3-min"></div>
             </div>
         </div>
-    <!-- </div> --> 
+    </div>
 
-    <!-- Skycons (icônes animées) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/skycons/1396634940/skycons.js"></script>
-
-    <!-- Ton script principal -->
     <script src="script.js"></script>
 </body>
 </html>
