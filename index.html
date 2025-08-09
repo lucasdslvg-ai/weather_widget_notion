@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Météo — Genève</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="weather-card">
+        <!-- Météo actuelle -->
+        <div class="current-weather">
+            <h2 class="city">GENEVA</h2>
+            <p class="subtitle">WEATHER</p>
+            <canvas class="weather-icon" width="64" height="64"></canvas>
+            <div class="temperature">--°C</div>
+            <p class="description">chargement…</p>
+        </div>
+
+        <!-- Prévisions -->
+        <div class="forecast">
+            <div class="day">
+                <p class="day-name">Sam</p>
+                <canvas class="weather-icon" width="48" height="48"></canvas>
+                <p class="temp-max">--°C</p>
+                <p class="temp-min">--°C</p>
+            </div>
+            <div class="day">
+                <p class="day-name">Dim</p>
+                <canvas class="weather-icon" width="48" height="48"></canvas>
+                <p class="temp-max">--°C</p>
+                <p class="temp-min">--°C</p>
+            </div>
+            <div class="day">
+                <p class="day-name">Lun</p>
+                <canvas class="weather-icon" width="48" height="48"></canvas>
+                <p class="temp-max">--°C</p>
+                <p class="temp-min">--°C</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Skycons (icônes animées) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/skycons/1396634940/skycons.js"></script>
+
+    <!-- Ton script principal -->
+    <script src="script.js"></script>
+</body>
+</html>
