@@ -27,7 +27,7 @@ body {
 
 /* Petite optimisation pour Notion (réduire la largeur si embed) */
 @media (max-width: 360px){
-  .weather-card{ width: 280px; padding: 14px }
+  .body{ width: 280px; padding: 14px }
 }
 
 /* Météo actuelle */
