@@ -1,6 +1,11 @@
+:root {
+    --bg-color: #1f1f1f; /* Padrão escuro */
+    --text-color: white;
+}
+
 body {
-    background-color: #1c1c1c;
-    color: white;
+    background-color: var(--bg-color);
+    color: var(--text-color);
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
@@ -10,8 +15,13 @@ body {
 }
 .weather-widget {
     display: flex;
-    gap: 40px;
     align-items: center;
+    gap: 2rem;
+}
+.location {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza verticalmente o texto */
 }
 .current-weather {
     display: flex;
@@ -49,4 +59,14 @@ body {
     color: #ffcc99;
     font-weight: bold;
     font-size: 14px;
+}
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg-color: white;
+        --text-color: black;
+    }
+}
+/* Petite optimisation pour Notion (réduire la largeur si embed) */
+@media (max-width: 360px){
+  .body{ width: 280px; padding: 14px }
 }
